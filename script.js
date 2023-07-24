@@ -17,7 +17,7 @@ function playSound(audioName) {
     audio.loop = true;
     audio.play();
 }
-// playSound('Elevator Music.mp3')
+playSound('Elevator Music.mp3')
 
 
 let getComputerChoice = function () {
