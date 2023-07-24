@@ -1,72 +1,112 @@
 let options = ["Rock", "Paper", "Scissors"]
 
-function getComputerChoice(min, max) {
-    let randomNum =  Math.floor(Math.random()* (max - min + 1)) + min;
-    return options[randomNum];
+const comChoice = document.querySelector('.comChoice');
+const Btn = document.querySelectorAll('.Btn');
+
+
+function clickSound(audioName) {
+    let audio = new Audio(audioName);
+    audio.loop = false;
+    audio.play();
+}
+Btn.forEach((button) => {
+    button.addEventListener('click', function() { clickSound('ButtonClick1.mp3')})});
+
+function playSound(audioName) {
+    let audio = new Audio(audioName);
+    audio.loop = true;
+    audio.play();
+}
+// playSound('Elevator Music.mp3')
+
+
+let getComputerChoice = function () {
+    let randomNum =  Math.floor(Math.random()* ((options.length - 1) - 0 + 1)) + 0;
+    comChoice.textContent = "Computer Chose " + '"' + options[randomNum] + '"';
 }
 
+Btn.forEach((button) => {
+    button.addEventListener('click', function() { getComputerChoice()})});
 
-function winner() {
-    let playerSelection = prompt("Choose: Rock, Paper, or Scissors?", "Rock, Paper, or Scissors")
-    let computerSelection = getComputerChoice(0, options.length -1)
-    alert(`computer chose ${computerSelection}`)
 
-    if (playerSelection === "Rock" && computerSelection === "Paper") {
-        return "You Lose! Paper beats Rock";
 
-    } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-        return "You Win! Rock beats Scissors";
-
-    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-        return "You Win! Scissors beats Paper";
-
-    } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-        return "You Lose! Rock beats Scissors";
-
-    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-        return "You Win! Paper beats Rock";
-
-    } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
-        return "You Lose! Scissors beats Paper";
-
-    } else if (playerSelection === "Paper" && computerSelection === "Paper") {
-        return "Draw!";
-    } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
-        return "Draw!";
-    } else if (playerSelection === "Rock" && computerSelection === "Rock") {
-        return "Draw!";
+const result = document.querySelector('.result');
+const BtnR = document.querySelector('.BtnR');
+BtnR.addEventListener('click', function playerSelection() {
+    if (comChoice.textContent === 'Computer Chose "Paper"') {
+        result.textContent = "You Lose! Paper beats Rock"
+    } else if (comChoice.textContent === 'Computer Chose "Rock"') {
+        result.textContent = "Draw!"
+    } else if (comChoice.textContent === 'Computer Chose "Scissors"') {
+        result.textContent = "You Win! Rock beats Scissors"
     }
-
-}
-
+})
 
 
-function game() {
-    
-    let player = 0;
-    let computer = 0;
-    for (let i = 0; i < 5; i++) {
+const BtnP = document.querySelector('.BtnP');
+BtnP.addEventListener('click', function playerSelection() {
+    if (comChoice.textContent === 'Computer Chose "Paper"') {
+        result.textContent = "Draw!"
+    } else if (comChoice.textContent === 'Computer Chose "Rock"') {
+        result.textContent = "You Win! Paper beats Rock"
+    } else if (comChoice.textContent === 'Computer Chose "Scissors"') {
+        result.textContent = "You Lose! Scissors beats Paper"
+    }
+})
 
-        let theWinner = winner();
-        alert(theWinner);
+
+const BtnS = document.querySelector('.BtnS');
+BtnS.addEventListener('click', function playerSelection() {
+    if (comChoice.textContent === 'Computer Chose "Paper"') {
+        result.textContent = "You Win! Scissors beats Paper"
+    } else if (comChoice.textContent === 'Computer Chose "Rock"') {
+        result.textContent = "You Lose! Rock beats Scissors"
+    } else if (comChoice.textContent === 'Computer Chose "Scissors"') {
+        result.textContent = "Draw!" 
+    }
+})
+
+
+const mainDiv = document.querySelector('.main');
+const score = document.createElement('div');
+score.classList.add('score');
+mainDiv.appendChild(score)
+
+let player = 0;
+let computer = 0;
+
+function theWinner() {
+
+    if (result.textContent === "You Lose! Paper beats Rock" || result.textContent === "You Lose! Rock beats Scissors" || result.textContent === "You Lose! Scissors beats Paper") {
+        computer++;
         
-        if (theWinner === "You Lose! Paper beats Rock" || theWinner === "You Lose! Rock beats Scissors" || theWinner === "You Lose! Scissors beats Paper") {
-            computer++;
-            alert(`computer has ${computer} points`)
-        } else if (theWinner === "You Win! Rock beats Scissors" || theWinner === "You Win! Scissors beats Paper" || theWinner === "You Win! Paper beats Rock") {
-            player++;
-            alert(`player has ${player} points`)
-        } else if (theWinner === "Draw!") {
-            alert("It was a Draw so no points are added!")
-        }
-        
+    } else if (result.textContent === "You Win! Rock beats Scissors" || result.textContent === "You Win! Scissors beats Paper" || result.textContent === "You Win! Paper beats Rock") {
+        player++;
+        // score.textContent = `Computer ${computer} Player ${player}`;
     }
-    if (player > computer) {
-        alert(`Congratulations you win with ${player} points`)
-    } else if (player < computer){
-        alert(`You Lose, the score is (${computer} - ${player}) to computer, better luck next time.`)
-    } else if (player = computer) {
-        alert("This can't be, there must be a problem here!")
-    }
+    score.textContent = `Computer ${computer} Player ${player}`;
+    console.log(`${computer} "+" ${player}`)
+
+
+
 }
+
+
+Btn.forEach((button) => {
+    button.addEventListener('click', function() { theWinner()})});
+
+
+
+
+        
+//     // }
+//     if (player > computer) {
+//         alert(`Congratulations you win with ${player} points`)
+//     } else if (player < computer){
+//         alert(`You Lose, the score is (${computer} - ${player}) to computer, better luck next time.`)
+//     } else if (player = computer) {
+//         alert("This can't be, there must be a problem here!")
+//     }
+// }
+
 

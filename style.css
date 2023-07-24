@@ -1,0 +1,79 @@
+@font-face {
+    font-family: Halloween-Slime;
+    src: url(HalloweenSlimePersonalUse-4B80D.otf);
+}
+body {
+    font-style: italic;
+    /* background: url(IMG_5330.JPG);
+    background-position:center;
+    background-size: cover; */
+    background-color: rgb(0, 0, 0);
+    
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+
+}
+
+.Btn {
+    width: 130px;
+    height: 130px;
+    margin: 30px;
+    font-size: 30px;
+    background-color: transparent;
+    color: white;
+    cursor:pointer;
+    border-radius: 10px;
+
+}
+
+
+.Btn:hover {
+    box-shadow: 0 0 8px 8px rgb(5, 194, 228);
+}
+
+.BtnR img {
+    height: 90px;
+    width: 100px;
+}
+
+img {
+    width: 80px;
+    height: 100px;
+}
+
+#fate, .comChoice {
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+    font-family: 'Halloween-Slime', sans-serif;
+
+}
+
+.comChoice, .result {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    margin: 20px;
+    font-style: normal;
+    color: white;
+    display: flex;
+    justify-content: center;
+
+}
+
+.score {
+    font-family: 'Halloween-Slime', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+
+}
+
+
