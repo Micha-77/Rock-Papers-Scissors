@@ -4,9 +4,10 @@
 }
 body {
     font-style: italic;
-    /* background: url(IMG_5330.JPG);
-    background-position:center;
-    background-size: cover; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
     background-color: rgb(0, 0, 0);
     
 }
@@ -56,6 +57,10 @@ img {
 
 }
 
+#fate {
+    background-color: rgb(66, 78, 88);
+}
+
 .comChoice, .result {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
@@ -80,3 +85,32 @@ img {
     width: 200px;
 }
 
+#copyright {
+    color: white;
+    position: fixed;
+    top: 785px;
+    left: 750px;
+    font-size: 20px;
+    background-color: rgb(66, 78, 88);
+    padding: 20px 20px 20px 5px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+#gitImg {
+    width: 37px;
+    height: 37px;
+    position: fixed;
+    top: 797px;
+    left: 1060px;
+    transition: transform 0.2s ease;
+    
+}
+
+#gitImg:hover {
+    transform: scale(1.2) rotate(360deg);
+}
